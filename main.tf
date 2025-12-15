@@ -20,3 +20,11 @@ resource "panos_edl" "test_edl" {
   repeat      = "every five minutes"
   description = "EDL created by Terraform"
 }
+
+resource "panos_edl" "infoblox_domains" {
+  name        = "infoblox-malicious-domains"
+  type        = "domain"
+  source      = "http://192.168.137.1:8080/domains.txt"
+  repeat      = "hourly"
+  description = "Malicious domains from Infoblox feed"
+}
